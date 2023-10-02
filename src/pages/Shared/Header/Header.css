@@ -1,0 +1,6 @@
+.bg-color{
+    background: var(--Dark-07, #F3F3F3);
+}
+.img-user{
+    width: 40px;
+}
