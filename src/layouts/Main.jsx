@@ -11,7 +11,7 @@ const Main = () => {
     <div>
       <Header></Header>
       <Container>
-        <Row>
+        <Row className='mt-5'>
           <Col lg={3}>
             <LeftNav>
 

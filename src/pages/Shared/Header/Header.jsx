@@ -18,7 +18,7 @@ const Header = () => {
                 <p>{moment().format("dddd, MMMM D, YYYY")}</p>
 
             </div>
-            <div className='d-flex p-3 pe-5 fw-bold bg-color'>
+            <div className='d-flex p-3 fw-bold bg-color'>
                 <Button className='fw-normal' variant='danger'>Latest</Button>
                 <Marquee className='fw-bold' speed={50}>
                     I can be a React component, multiple React components, or just some text.I can be a React component, multiple React components, or just some text. orrr sososos
@@ -28,7 +28,7 @@ const Header = () => {
                 <Container className='pe-0'>
                     <Navbar.Toggle  className='' aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="ms-auto">
+                        <Nav className=" fw-bold ms-auto">
                             <Nav.Link href="#features">Home</Nav.Link>
                             <Nav.Link href="#pricing">About</Nav.Link>
                             <Nav.Link href="#pricing">Career</Nav.Link>
