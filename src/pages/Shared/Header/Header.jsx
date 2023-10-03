@@ -7,15 +7,14 @@ import Marquee from "react-fast-marquee";
 import './Header.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const Header = () => {
     return (
         <Container>
             <div className="text-center mt-5">
                 <img src={logo} className='img-fluid' alt="" />
-                <p className='text-secondary'>Journalism Without Fear or Favour</p>
-                <p>{moment().format("dddd, MMMM D, YYYY")}</p>
+                <h5 className='text-secondary'>Journalism Without Fear or Favour</h5>
+                <h5>{moment().format("dddd, MMMM D, YYYY")}</h5>
 
             </div>
             <div className='d-flex p-3 fw-bold bg-color'>

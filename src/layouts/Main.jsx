@@ -19,7 +19,7 @@ const Main = () => {
           </Col>
 
           <Col lg={6}>
-            <h2>Main content comming</h2>
+            <h3>Main content comming</h3>
           </Col>
 
           <Col lg={3}>
