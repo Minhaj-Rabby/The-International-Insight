@@ -7,6 +7,7 @@ import Marquee from "react-fast-marquee";
 import './Header.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -27,10 +28,16 @@ const Header = () => {
                 <Container className='pe-0'>
                     <Navbar.Toggle  className='' aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className=" fw-bold ms-auto">
-                            <Nav.Link href="#features">Home</Nav.Link>
-                            <Nav.Link href="#pricing">About</Nav.Link>
-                            <Nav.Link href="#pricing">Career</Nav.Link>
+                        <Nav className=" fw-bold ms-auto ">
+                            <Nav.Link>
+                                <Link className='text-decoration-none text-dark' to="/">Home</Link>
+                            </Nav.Link>
+                            <Nav.Link >
+                                <Link className='text-decoration-none text-dark' to="">About</Link>
+                            </Nav.Link>
+                            <Nav.Link >
+                                <Link className='text-decoration-none text-dark' to="">Contact</Link>
+                            </Nav.Link>
                         </Nav>
                         <Nav className='ms-auto '>
                             <Nav.Link href="#deets"><img src={userImg} className="img-user"alt="" /></Nav.Link>

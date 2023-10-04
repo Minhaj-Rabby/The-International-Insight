@@ -19,7 +19,7 @@ const Main = () => {
           </Col>
 
           <Col lg={6}>
-            <h3>Main content comming</h3>
+            <Outlet></Outlet>
           </Col>
 
           <Col lg={3}>
