@@ -1,21 +1,61 @@
-import React from 'react'
+import { useContext } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../providers/AuthProvider'
+import { useState } from 'react'
 
 const Register = () => {
+  const { user,profileUpdate, createUser } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const [success, setSucess] = useState('');
+
+  const handleRegister = event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    console.log(name, email, password, photo);
+
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?"]).{8,}$/.test(password)) {
+      setSucess('');
+      setError('Password Must Contain a Uppercase, a Lowercase , a Special character, a Digit   and 8 Character.');
+      return;
+    };
+
+    createUser(email, password)
+      .then(result => {
+        const createdUser = result.user;
+        // console.log(createdUser);
+        setSucess('Account Created Successfully');
+        profileUpdate(name, photo);
+        console.log('after',createdUser);
+        form.reset();
+        setError('');
+      })
+      .catch(error => {
+        setSucess('');
+        setError(error.code);
+       
+        
+
+      })
+  }
+
   return (
-    <Container >
+    <Container className='mb-3' >
       <Row >
         <Col className='mx-auto' md={8} lg={4} xs={12}>
           <h4 className='text-center my-3'>Register your account</h4>
-          <Form>
+          <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label className='fw-semibold'>Your Name</Form.Label>
               <Form.Control type="text" name='name' className='rounded-0' placeholder="Enter your name" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPhoto">
               <Form.Label className='fw-semibold'>Photo URL</Form.Label>
-              <Form.Control type="text" className='rounded-0' name='photo' placeholder="Enter your photo" required />
+              <Form.Control type="url" className='rounded-0' name='photo' placeholder="Enter your photo" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className='fw-semibold'>Email address</Form.Label>
@@ -36,9 +76,15 @@ const Register = () => {
               Already Have an Account? <Link className='text-danger text-decoration-none' to='/login' >LogIn</Link>
             </div>
             <Form.Text className="text-success">
+              {
+                success
+              }
 
             </Form.Text>
             <Form.Text className="text-danger">
+              {
+                error
+              }
 
             </Form.Text>
           </Form>

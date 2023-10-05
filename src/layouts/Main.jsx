@@ -16,7 +16,7 @@ const Main = () => {
         <div className='d-flex p-2 my-2 fw-bold bg-color'>
           <Button className='fw-normal border-0 rounded-0' variant='danger'>Latest</Button>
           <Marquee className='fw-bold' speed={50}>
-            I can be a React component, multiple React components, or just some text.I can be a React component, multiple React components, or just some text. orrr sososos
+         " Shaquille O’Neal auctions a 1000 size 22 Reeboks for $999.32 each!","America Imported Over $6 Billion in Goods From Russia Since Ukraine Invasion","Tucker Carlson: Putin Winning in Ukraine, Biden Hurting West","Joe Biden announces $3 billion in Ukraine weapons aid",
           </Marquee>
         </div>
       </Container>

@@ -6,7 +6,15 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavigationBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user ,logOut} = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .then()
+        .catch(error=>{
+            console.error(error);
+        });
+    }
     return (
         <Container>
             <Navbar collapseOnSelect expand="lg" variant='light '>
@@ -28,7 +36,7 @@ const NavigationBar = () => {
                                     <>
                                         <img src={userImg} className="img-user" alt="" />
 
-                                        <Button className='border-0 rounded-0 ms-2' variant="dark">LogOut</Button>
+                                        <Button onClick={handleLogOut } className='border-0 rounded-0 ms-2' variant="dark">LogOut</Button>
                                     </> :
                                     <Link to='/login'>
                                         <Button className='border-0 rounded-0' variant="dark">LogIn</Button></Link>
