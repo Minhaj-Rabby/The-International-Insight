@@ -8,19 +8,21 @@ import { FaCalendar } from 'react-icons/fa';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const BottomLeft = ({ id }) => {
-    const [name, setName] = useState('');
-  
-    useEffect(() => {
-      const url = `http://localhost:5000/category/${id}`;
-      fetch(url)
-        .then(response => response.text())
-        .then(data => 
-            setName(data))
-    }, [id]);
-    
-  return (
-    <div className='mb-5'>
+const BottomLeft = () => {
+    // const [name, setName] = useState('');
+    // {
+    //     id &&
+    //     useEffect(() => {
+    //         const url = `http://localhost:5000/category/${id}`;
+    //         fetch(url)
+    //             .then(response => response.text())
+    //             .then(data =>
+    //                 setName(data))
+    //     }, [id]);
+    // }
+
+    return (
+        <div className='my-5'>
             <Row xs={1} md={1} lg={1} className="g-4">
 
                 <Col>
@@ -29,7 +31,7 @@ const BottomLeft = ({ id }) => {
                         <Card.Body>
                             <Card.Title className='text-start fw-bold'>21 The Most Stylish Wedding Guest Dresses For Spring</Card.Title>
                             <Card.Text className='fs-6 text-secendary'>
-                               {name} <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
+                               <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -40,7 +42,7 @@ const BottomLeft = ({ id }) => {
                         <Card.Body>
                             <Card.Title className='text-start fw-bold'>21 The Most Stylish Wedding Guest Dresses For Spring</Card.Title>
                             <Card.Text className='fs-6 text-secendary'>
-                            {name} <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
+                                <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
                             </Card.Text>
                         </Card.Body>
                     </Card>
@@ -51,14 +53,14 @@ const BottomLeft = ({ id }) => {
                         <Card.Body>
                             <Card.Title className='text-start  fw-bold'>21 The Most Stylish Wedding Guest Dresses For Spring</Card.Title>
                             <Card.Text className='fs-6 text-secendary'>
-                            {name} <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
+                            <FaCalendar className='ms-3'></FaCalendar> Jan 4, 2022
                             </Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
             </Row>
         </div>
-  )
+    )
 }
 
 export default BottomLeft

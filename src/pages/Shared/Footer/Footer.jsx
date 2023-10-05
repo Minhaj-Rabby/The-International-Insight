@@ -3,7 +3,8 @@ import React from 'react'
 const Footer = () => {
   return (
     <div>
-        <h4 className='text-center'><small>Copyright of my news</small></h4>
+        <p className='text-center mb-4'><small>Copyright © 2023 - All right reserved by The International Insight
+.</small></p>
     </div>
   )
 }

@@ -9,7 +9,7 @@ import { FaCalendar } from 'react-icons/fa';
 const EditorInsights = () => {
     return (
         <div className='mb-5'>
-            <h3 className='my-4'>Editors Insight</h3>
+            <h4 className='my-4'>Editors Insight</h4>
             <Row xs={1} md={2} lg={3} className="g-4">
 
 

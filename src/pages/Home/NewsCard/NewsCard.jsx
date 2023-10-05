@@ -33,7 +33,7 @@ const NewsCard = ({ news }) => {
                 </Card.Text>
 
             </Card.Body>
-            <Card.Footer style={{ height: '60px' }} className="fs-5 text-muted d-flex align-items-center ">
+            <Card.Footer style={{ height: '60px' }} className="fs-6 text-muted d-flex align-items-center ">
                 <div className='flex-grow-1'>
                     <Rating
                         placeholderRating={rating.number}
