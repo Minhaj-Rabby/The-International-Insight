@@ -13,7 +13,7 @@ const BottomLeft = () => {
     // {
     //     id &&
     //     useEffect(() => {
-    //         const url = `http://localhost:5000/category/${id}`;
+    //         const url = `https://the-international-insight-server.vercel.app/category/${id}`;
     //         fetch(url)
     //             .then(response => response.text())
     //             .then(data =>

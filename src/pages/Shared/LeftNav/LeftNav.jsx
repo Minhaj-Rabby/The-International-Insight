@@ -10,7 +10,7 @@ const LeftNav = () => {
 
   useState(()=>{
 
-    fetch('http://localhost:5000/categories')
+    fetch('https://the-international-insight-server.vercel.app/categories')
     .then(res=>res.json())
     .then(data=>setCategories(data))
     .catch(err=>{
