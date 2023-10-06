@@ -37,9 +37,9 @@ const NavigationBar = () => {
                             {
                                 user ?
                                     <>
-                                        <Image src={photoURL} className="img-user" alt="" roundedCircle/>
+                                        <Image src={photoURL} className="img-user me-2" alt="" roundedCircle/>
 
-                                        <Button onClick={handleLogOut} className='border-0 rounded-0 ms-2' variant="dark">LogOut</Button>
+                                        <Link><Button onClick={handleLogOut} className='border-0 rounded-0' variant="dark">LogOut</Button></Link>
                                     </> :
                                     <Link to='/login'>
                                         <Button className='border-0 rounded-0' variant="dark">LogIn</Button></Link>

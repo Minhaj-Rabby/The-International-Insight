@@ -4,9 +4,10 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProvider';
 import { useState } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const LogIn = () => {
-  const { user, signIn } = useContext(AuthContext);
+  const { user, signIn,signInGithub, signInGoogle, } = useContext(AuthContext);
   const [error, setError] = useState('');
   const [success, setSucess] = useState('');
   const location = useLocation();
@@ -14,16 +15,34 @@ const LogIn = () => {
 
   const navigate = useNavigate();
 
+  
+  const handleGoogleLogin = () => {
+    signInGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+  }
+  const handleGithubLogin = () => {
+    signInGithub()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error.message);
+
+      })
+  }
+
   const handleLogIn = event => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
-    // if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?"]).{8,}$/.test(password)) {
-    //   setError('Password Must Contain a Uppercase, a Lowercase , a Special character, a Digit   and 8 Character.');
-    //   return;
-    // };
 
     signIn(email, password)
       .then(result => {
@@ -42,7 +61,7 @@ const LogIn = () => {
   return (
     <Container className='mb-3' >
       <Row >
-        <Col className='mx-auto' md={8} lg={4} xs={12}>
+        <Col className='mx-auto' md={8} lg={5} xs={12}>
           <h4 className='text-center my-3'>Login your account</h4>
           <Form onSubmit={handleLogIn}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -58,6 +77,13 @@ const LogIn = () => {
             <Button className=' w-100 border-0 rounded-0' variant="secondary" type="submit">
               LogIn
             </Button>
+
+            <div className='d-flex my-3 justify-content-center align-items-center'>
+              <Button onClick={handleGoogleLogin} className='text-dark me-3' variant="outline-secondary" ><FaGoogle className='me-2 ' />Login With Google</Button>
+              <Button onClick={handleGithubLogin} className='text-dark ' variant="outline-secondary"><FaGithub className='me-2 text-dark' />Login With Github</Button>
+            </div>
+
+
             <div className="text-center fw-semibold my-3">
               Don't Have an Account? <Link className='text-danger text-decoration-none' to='/register' >Register</Link>
             </div>
