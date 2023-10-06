@@ -11,14 +11,18 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState('anik');
+    const [user, setUser] = useState(null);
+
+    const[loading,setLoading] = useState(true);
 
     // console.log(user);
 
     const createUser=(email,pasword)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, pasword);
     }
     const signIn=(email,pasword)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, pasword);
     }
     const profileUpdate=(name,photo)=>{
@@ -28,12 +32,14 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut=()=>{
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(()=>{
         const unsubscribe=onAuthStateChanged(auth,loggeduser=>{
             setUser(loggeduser);
+            setLoading(false);
         })
 
         return ()=>{
@@ -48,6 +54,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         profileUpdate,
         logOut,
+        loading,
     }
 
     return (

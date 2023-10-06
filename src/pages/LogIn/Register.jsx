@@ -5,9 +5,15 @@ import { AuthContext } from '../../providers/AuthProvider'
 import { useState } from 'react'
 
 const Register = () => {
-  const { user,profileUpdate, createUser } = useContext(AuthContext);
+  const { user, profileUpdate, createUser } = useContext(AuthContext);
   const [error, setError] = useState('');
   const [success, setSucess] = useState('');
+  const [accept, setAccept] = useState(false);
+
+
+  const handleAccept = event => {
+    setAccept(event.target.checked);
+  }
 
   const handleRegister = event => {
     event.preventDefault();
@@ -30,15 +36,15 @@ const Register = () => {
         // console.log(createdUser);
         setSucess('Account Created Successfully');
         profileUpdate(name, photo);
-        console.log('after',createdUser);
+        console.log('after', createdUser);
         form.reset();
         setError('');
       })
       .catch(error => {
         setSucess('');
         setError(error.code);
-       
-        
+
+
 
       })
   }
@@ -67,9 +73,14 @@ const Register = () => {
               <Form.Control type="password" name="password" className='rounded-0' placeholder="Enter your password" required />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" name='accept' label="Accept Term & Conditions" />
+              <Form.Check
+                onClick={handleAccept}
+                type="checkbox"
+                name='accept'
+                label={<>Accetp <Link to="/terms">Terms and Conditions</Link></>}
+              />
             </Form.Group>
-            <Button className=' w-100 border-0 rounded-0' variant="secondary" type="submit">
+            <Button className=' w-100 border-0 rounded-0' disabled={!accept} variant="secondary" type="submit">
               Register
             </Button>
             <div className="text-center fw-semibold my-3">
