@@ -6,7 +6,7 @@ const About = () => {
     return (
         <Container className="my-3">
             <Row>
-                <Col>
+                <Col className='mx-auto border border-dark p-3 mb-3' md={8} lg={8} xs={12}>
                     <h4 className='text-center'>About Our Website</h4>
                     <p>
                         Welcome to The International Insight! Here, you can learn more about our goals and missions.

@@ -4,10 +4,10 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const Contact = () => {
     return (
-        <Container className="mt-3">
+        <Container className="mt-3 ">
             <Row>
-                <Col className='mx-auto' md={8} lg={8} xs={12}>
-                    <h1>Contact Me</h1>
+                <Col className='mx-auto border border-dark p-3 mb-3' md={8} lg={8} xs={12}>
+                    <h4 className='text-center'>Contact Me</h4>
                     <p>
                         If you have any questions, feedback, or inquiries, please feel free to contact us using the form below.
                     </p>
