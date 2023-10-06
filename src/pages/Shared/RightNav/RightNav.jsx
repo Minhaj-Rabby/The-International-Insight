@@ -3,17 +3,51 @@ import { Button, ListGroup } from 'react-bootstrap';
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
 import './RightNav.css';
-import { Link } from 'react-router-dom';
-import BottomLeft from '../LeftNav/BottomLeft';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import BottomRigh from './BottomRigh';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
-const RightNav = ({st}) => {
+const RightNav = ({ st }) => {
+
+  const { user, signInGithub, signInGoogle, } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from.pathname || '/category/0';
+  const navigate = useNavigate();
+
+  const handleGoogleLogin = () => {
+    signInGoogle()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+  }
+  const handleGithubLogin = () => {
+    signInGithub()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error.message);
+
+      })
+  }
 
   return (
     <div>
-      <h4>Login With</h4>
-      <Button className='my-3 w-100' variant="outline-primary" size="lg"><FaGoogle className='me-2 ' />Login With Google</Button>
-      <Button className=' mb-3 w-100' variant="outline-secondary" size="lg"><FaGithub className='me-2 text-dark' />Login With Github</Button>
+
+      {
+        !user &&
+        <div>
+          <h4>Login With</h4>
+          <Button onClick={handleGoogleLogin} className='text-dark fw-semibold my-3 w-100' variant="outline-secondary" size="lg"><FaGoogle className='me-2 ' />Login With Google</Button>
+          <Button onClick={handleGithubLogin} className='text-dark fw-semibold mb-3 w-100' variant="outline-secondary" size="lg"><FaGithub className='me-2 text-dark' />Login With Github</Button>
+        </div>
+      }
       <div>
         <h4 className='mt-3'>Find Us On</h4>
 
@@ -23,10 +57,10 @@ const RightNav = ({st}) => {
           <ListGroup.Item><Link to="https://www.instagram.com/" target="_blank" className='text-decoration-none'><FaInstagram className='me-3 fs-3 text-danger'></FaInstagram>Instagram</Link></ListGroup.Item>
         </ListGroup>
       </div>
-      
+
       <QZone></QZone>
       <BottomRigh st={st}></BottomRigh>
-      
+
     </div>
   )
 }

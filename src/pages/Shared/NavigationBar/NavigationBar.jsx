@@ -1,19 +1,22 @@
 import React from 'react'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import userImg from '../../../assets/user.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavigationBar = () => {
-    const { user ,logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const photoURL = user?.photoURL ? user.photoURL : userImg;
 
     const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(error=>{
-            console.error(error);
-        });
+            .then()
+            .catch(error => {
+                console.error(error);
+            });
     }
     return (
         <Container>
@@ -22,21 +25,21 @@ const NavigationBar = () => {
                     <Navbar.Toggle className='' aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className=" fw-bold ms-auto ">
-                            
-                                <Link className='text-decoration-none text-dark me-3' to="/category/0">Home</Link>
-                            
-                                <Link className='text-decoration-none text-dark me-3' to="/about">About</Link>
-                           
-                                <Link className='text-decoration-none text-dark' to="/contact">Contact</Link>
-                           
+
+                            <Link className='text-decoration-none text-dark me-3' to="/category/0">Home</Link>
+
+                            <Link className='text-decoration-none text-dark me-3' to="/about">About</Link>
+
+                            <Link className='text-decoration-none text-dark' to="/contact">Contact</Link>
+
                         </Nav>
                         <Nav className='ms-auto '>
                             {
                                 user ?
                                     <>
-                                        <img src={userImg} className="img-user" alt="" />
+                                        <Image src={photoURL} className="img-user" alt="" roundedCircle/>
 
-                                        <Button onClick={handleLogOut } className='border-0 rounded-0 ms-2' variant="dark">LogOut</Button>
+                                        <Button onClick={handleLogOut} className='border-0 rounded-0 ms-2' variant="dark">LogOut</Button>
                                     </> :
                                     <Link to='/login'>
                                         <Button className='border-0 rounded-0' variant="dark">LogIn</Button></Link>

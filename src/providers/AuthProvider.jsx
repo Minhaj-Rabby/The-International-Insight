@@ -1,13 +1,15 @@
 import React from 'react'
 import { createContext } from 'react'
 import app from '../firebase/firebase.config';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
@@ -19,10 +21,23 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, pasword);
     }
+
     const signIn=(email,pasword)=>{
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, pasword);
     }
+    
+    const signInGoogle=()=>{
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    }
+
+    
+    const signInGithub=()=>{
+        setLoading(true);
+        return signInWithPopup(auth, gitHubProvider);
+    }
+
     const profileUpdate=(name,photo)=>{
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
@@ -50,6 +65,8 @@ const AuthProvider = ({ children }) => {
         user,
         createUser,
         signIn,
+        signInGithub,
+        signInGoogle,
         profileUpdate,
         logOut,
         loading,
