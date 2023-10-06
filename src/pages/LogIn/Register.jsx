@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProvider'
 import { useState } from 'react'
 
@@ -9,6 +9,8 @@ const Register = () => {
   const [error, setError] = useState('');
   const [success, setSucess] = useState('');
   const [accept, setAccept] = useState(false);
+  const navigate = useNavigate();
+
 
 
   const handleAccept = event => {
@@ -22,7 +24,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-    console.log(name, email, password, photo);
 
     if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&?"]).{8,}$/.test(password)) {
       setSucess('');
@@ -33,12 +34,11 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         const createdUser = result.user;
-        // console.log(createdUser);
         setSucess('Account Created Successfully');
         profileUpdate(name, photo);
-        console.log('after', createdUser);
         form.reset();
         setError('');
+        navigate('/category/0');
       })
       .catch(error => {
         setSucess('');
@@ -50,7 +50,7 @@ const Register = () => {
   }
 
   return (
-    <Container className='mb-3' >
+    <Container className='mb-1' >
       <Row >
         <Col className='mx-auto' md={8} lg={4} xs={12}>
           <h4 className='text-center my-3'>Register your account</h4>

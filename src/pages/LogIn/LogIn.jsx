@@ -25,12 +25,9 @@ const LogIn = () => {
     //   return;
     // };
 
-    console.log(email, password);
-
     signIn(email, password)
       .then(result => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         setSucess('Account LoggedIn Successfully');
         form.reset();
         setError('');
@@ -38,7 +35,6 @@ const LogIn = () => {
       })
       .catch(error => {
         setError(error.code);
-        // console.log(error);
         setSucess('');
       })
   }

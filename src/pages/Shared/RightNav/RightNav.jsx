@@ -1,11 +1,14 @@
 import React from 'react'
 import { Button, ListGroup } from 'react-bootstrap';
-import { FaBeer, FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-icons/fa';
 import QZone from '../QZone/QZone';
-import bg from '../../../assets/bg.png'
 import './RightNav.css';
+import { Link } from 'react-router-dom';
+import BottomLeft from '../LeftNav/BottomLeft';
+import BottomRigh from './BottomRigh';
 
-const RightNav = () => {
+const RightNav = ({st}) => {
+
   return (
     <div>
       <h4>Login With</h4>
@@ -13,20 +16,17 @@ const RightNav = () => {
       <Button className=' mb-3 w-100' variant="outline-secondary" size="lg"><FaGithub className='me-2 text-dark' />Login With Github</Button>
       <div>
         <h4 className='mt-3'>Find Us On</h4>
+
         <ListGroup className='my-3 fs-5 fw-normal'>
-          <ListGroup.Item><FaFacebook className='me-3 fs-3 text-primary'></FaFacebook>Facebook</ListGroup.Item>
-          <ListGroup.Item><FaTwitter className='me-3 fs-3 text-primary'></FaTwitter>Twitter</ListGroup.Item>
-          <ListGroup.Item><FaInstagram className='me-3 fs-3 text-danger'></FaInstagram>Instagram</ListGroup.Item>
+          <ListGroup.Item><Link to="https://www.facebook.com/" target="_blank" className='text-decoration-none'><FaFacebook className='me-3 fs-3 text-primary'></FaFacebook>Facebook</Link></ListGroup.Item>
+          <ListGroup.Item><Link to="https://twitter.com/" target="_blank" className='text-decoration-none'><FaTwitter className='me-3 fs-3 text-primary'></FaTwitter>Twitter</Link></ListGroup.Item>
+          <ListGroup.Item><Link to="https://www.instagram.com/" target="_blank" className='text-decoration-none'><FaInstagram className='me-3 fs-3 text-danger'></FaInstagram>Instagram</Link></ListGroup.Item>
         </ListGroup>
       </div>
+      
       <QZone></QZone>
-      <div className='bg-image mt-3'>
-      <div className="w-ful text-center text-white p-5">
-        <h3 >Create an Amazing Newspaper</h3>
-        <p className='fs-6'>Discover thousands of options, easy to customize layouts, one-click to import demo and much more.</p>
-       <Button className=' py-2 border-0 rounded-0' variant="danger" size="lg">Learn More</Button>
-      </div>
-      </div>
+      <BottomRigh st={st}></BottomRigh>
+      
     </div>
   )
 }

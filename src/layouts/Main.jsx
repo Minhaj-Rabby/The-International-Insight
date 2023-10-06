@@ -34,7 +34,7 @@ const Main = () => {
           </Col>
 
           <Col lg={3}>
-            <RightNav>
+            <RightNav st={true}>
 
             </RightNav>
           </Col>

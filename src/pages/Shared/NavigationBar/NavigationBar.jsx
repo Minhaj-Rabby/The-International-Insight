@@ -25,9 +25,9 @@ const NavigationBar = () => {
                             
                                 <Link className='text-decoration-none text-dark me-3' to="/category/0">Home</Link>
                             
-                                <Link className='text-decoration-none text-dark me-3' to="">About</Link>
+                                <Link className='text-decoration-none text-dark me-3' to="/about">About</Link>
                            
-                                <Link className='text-decoration-none text-dark' to="">Contact</Link>
+                                <Link className='text-decoration-none text-dark' to="/contact">Contact</Link>
                            
                         </Nav>
                         <Nav className='ms-auto '>
